@@ -8,6 +8,13 @@
       "when": 1717949281286,
       "tag": "0000_melted_ben_parker",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1717953540019,
+      "tag": "0001_bitter_mad_thinker",
+      "breakpoints": true
     }
   ]
 }
