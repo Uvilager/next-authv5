@@ -44,7 +44,7 @@ export const register = async (values: z.infer<typeof registerFormSchema>) => {
   const newUser = {
     email,
     password: hashedPassword,
-    name: values.username,
+    name: username,
   };
   await db.insert(users).values(newUser);
   console.log("New user created", newUser);
