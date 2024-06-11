@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import GitHub from "next-auth/providers/github";
 
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { eq } from "drizzle-orm";
@@ -17,7 +17,6 @@ const getUserByEmail = async (email: string) => {
     console.log("User does not exist");
     return null;
   }
-  console.log("server user", user);
   return user[0];
 };
 
@@ -57,7 +56,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
         if (passwordsMatch) {
           // return user object with the their profile data
           console.log("Passwords match");
-          console.log(user);
           return user;
         }
         return null;

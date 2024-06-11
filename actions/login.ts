@@ -2,7 +2,7 @@
 
 import { signIn } from "@/auth";
 import { loginFormSchema } from "@/schemas/login-form";
-import { redirect } from "next/dist/server/api-utils";
+
 import { z } from "zod";
 
 export const login = async (values: z.infer<typeof loginFormSchema>) => {
@@ -15,7 +15,10 @@ export const login = async (values: z.infer<typeof loginFormSchema>) => {
 
   const { email, password } = result.data;
 
-  await signIn("credentials", { email, password });
-
-  console.log(values);
+  try {
+    await signIn("credentials", { email, password, redirectTo: "/user" });
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 };
